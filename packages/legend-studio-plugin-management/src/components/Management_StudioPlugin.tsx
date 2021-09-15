@@ -20,6 +20,7 @@ import type {
   ApplicationPageRenderEntry,
 } from '@finos/legend-studio';
 import { StudioPlugin } from '@finos/legend-studio';
+import { ConsumerVersionManager } from './ConsumerVersionManager';
 import { ProjectDashboard } from './ProjectDashboard';
 import { PATH_PARAM_TOKEN_REDIRECT_URL, URLRedirector } from './URLRedirector';
 
@@ -36,8 +37,13 @@ export class Management_StudioPlugin extends StudioPlugin {
     return [
       // project dashboard
       {
-        urlPattern: `/projectDashboard`,
+        urlPattern: `/project-dashboard`,
         component: ProjectDashboard,
+      },
+      // Consumer Version Management Dashboard
+      {
+        urlPattern: `/consumer-version-management`,
+        component: ConsumerVersionManager,
       },
       // URL redirector
       {

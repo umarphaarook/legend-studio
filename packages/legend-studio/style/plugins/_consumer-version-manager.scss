@@ -1,0 +1,142 @@
+/**
+ * Copyright (c) 2020-present, Goldman Sachs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@use '../mixins' as *;
+
+.plugin__consumer-version-manager {
+  margin: 0 auto;
+  margin-top: 20px;
+  color: var(--color-light-grey-50);
+  width: 95%;
+  // background-color: azure;
+
+  button {
+    color: var(--color-light-grey-100);
+    background: var(--color-lime-150);
+    border-bottom: 1px solid var(--color-dark-shade-100);
+    border-radius: 3px;
+  }
+
+  button:hover {
+    box-shadow: 1px 1px var(--color-dark-shade-100);
+  }
+
+  &__selectors {
+    padding: 3em 0;
+    width: 40%;
+    margin: 0 auto;
+
+    &__project {
+      margin-top: 2em;
+    }
+  }
+
+  &__title-and-buttons {
+    @include flexHSpaceBetween;
+
+    align-items: center;
+    padding: 30px 0;
+    margin-top: 3em;
+
+    &__title {
+      font-size: 1.5em;
+      letter-spacing: 0.1em;
+    }
+
+    &__buttons {
+      button {
+        margin-left: 1em;
+        font-size: 1.1em;
+        padding: 0.6em;
+        width: 10em;
+      }
+    }
+  }
+
+  &__table {
+    padding: 30px 0;
+    table {
+      table-layout: fixed;
+      border-collapse: collapse;
+      border: 0.1em solid var(--color-light-grey-100);
+      width: 100%;
+      // text-align: center;
+
+      caption {
+        text-align: left;
+        margin: 20px 0;
+      }
+
+      thead {
+        background-color: var(--color-black);
+        text-align: left;
+      }
+
+      tbody {
+        color: var(--color-black);
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: var(--color-light-grey-400);
+      }
+
+      tbody tr:nth-child(odd) {
+        background-color: var(--color-dark-grey-500);
+      }
+
+      th,
+      td {
+        padding: 0.5em;
+        border: 0.1em solid var(--color-light-grey-100);
+
+        button {
+          width: 5em;
+          padding: 0.3em;
+        }
+
+        input[type='checkbox'] {
+          width: 25px;
+          height: 25px;
+        }
+
+        input[type='checkbox']::after {
+          font-size: 25px;
+          color: var(--color-lime-150);
+          content: '\2714';
+          background-color: var(--color-light-grey-50);
+          display: inline-block;
+          visibility: visible;
+          padding: 0 4px;
+          border: 1px solid var(--color-dark-shade-100);
+        }
+      }
+    }
+
+    &__cell--incompatible {
+      color: var(--color-red-200);
+    }
+
+    &__cell--center {
+      text-align: center;
+    }
+
+    &__no-data {
+      @include flexCenter;
+
+      background-color: white;
+    }
+  }
+}

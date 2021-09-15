@@ -45,10 +45,11 @@ export const ProjectSelector = observer(
     props: {
       onChange: (focusNext: boolean) => void;
       create: () => void;
+      externalUse?: boolean;
     },
     ref: React.Ref<SelectComponent>,
   ) => {
-    const { onChange, create } = props;
+    const { onChange, create, externalUse = false } = props;
     const setupStore = useSetupStore();
     const applicationStore = useApplicationStore<StudioConfig>();
     const currentProjectId = setupStore.currentProjectId;
@@ -69,12 +70,15 @@ export const ProjectSelector = observer(
             applicationStore.alertIllegalUnhandledError,
           );
         }
-        applicationStore.navigator.goTo(
-          generateSetupRoute(
-            applicationStore.config.sdlcServerKey,
-            val?.value ?? '',
-          ),
-        );
+
+        if (!externalUse) {
+          applicationStore.navigator.goTo(
+            generateSetupRoute(
+              applicationStore.config.sdlcServerKey,
+              val?.value ?? '',
+            ),
+          );
+        }
       }
     };
 
@@ -109,18 +113,20 @@ export const ProjectSelector = observer(
 
     return (
       <div className="setup-selector">
-        <button
-          className="setup-selector__action btn--dark"
-          onClick={create}
-          tabIndex={-1}
-          disabled={
-            applicationStore.config.options
-              .TEMPORARY__disableSDLCProjectCreation
-          }
-          title={'Create a Project'}
-        >
-          <FaPlus />
-        </button>
+        {!externalUse && (
+          <button
+            className="setup-selector__action btn--dark"
+            onClick={create}
+            tabIndex={-1}
+            disabled={
+              applicationStore.config.options
+                .TEMPORARY__disableSDLCProjectCreation
+            }
+            title={'Create a Project'}
+          >
+            <FaPlus />
+          </button>
+        )}
         <CustomSelectorInput
           className="setup-selector__input"
           ref={ref}

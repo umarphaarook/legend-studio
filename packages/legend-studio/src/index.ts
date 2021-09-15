@@ -45,6 +45,11 @@ export { ClassFormEditor } from './components/editor/edit-panel/uml-editor/Class
 export { AppHeaderMenu } from './components/editor/header/AppHeaderMenu';
 export { TypeTree } from './components/shared/TypeTree';
 export { StudioTextInputEditor } from './components/shared/StudioTextInputEditor';
+export { ProjectSelector } from './components/setup/ProjectSelector';
+export {
+  SetupStoreProvider,
+  useSetupStore,
+} from './components/setup/SetupStoreProvider';
 
 // test
 export {
