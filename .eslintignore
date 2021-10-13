@@ -13,3 +13,5 @@
 
 # Exceptions
 /packages/legend-dev-utils/__tests__/fixtures/src/dummy.ts
+/packages/legend-studio-app/playwright.config.ts
+
